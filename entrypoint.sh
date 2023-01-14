@@ -41,16 +41,15 @@ if [[ -f /var/www/html/config.php ]]; then
 
     # Base URL
     sed -i "s/\$config_base_url.*';/\$config_base_url = '$ITFLOW_URL';/g" /var/www/html/config.php
+
+    # Repo Branch
+    sed -i "s/\$repo_branch.*';/\$repo_branch = '$ITFLOW_REPO_BRANCH';/g" /var/www/html/config.php
     
     find /var/www/html -type d -exec chmod 775 {} \;
     find /var/www/html -type f -exec chmod 664 {} \;
     chmod 640 /var/www/html/config.php
 else 
     chmod -R 777 /var/www/html
-fi
-
-if [[ -f /var/www/html/settings_update.php ]]; then 
-    sed -i "s/\$repo_branch.*';/\$repo_branch = '$ITFLOW_REPO_BRANCH';/g" /var/www/html/settings_update.php
 fi
 
 # Enable the apache2 sites-available
