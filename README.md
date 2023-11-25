@@ -1,7 +1,7 @@
 # About this Image
-This is the official Docker image of [ITFlow](https://github.com/itflow-org/itflow).
+This is the Docker image of [ITFlow](https://github.com/itflow-org/itflow). This image was created by a community member, we don't "officially" support Docker.
 
-Please read the wiki: https://wiki.itflow.org/ and https://www.itflow.org/docs.php.
+Please read the wiki: https://docs.itflow.org
 
 # Usage
 ## ITFlow Only (no Reverse Proxy) 
@@ -55,4 +55,3 @@ Please go about this by deleting your volume location ```./itflow```
 * I *strongly* recommend putting your solution behind [Authelia](https://www.authelia.com/). If requested, I can supply more information on this topic. 
 * This project is still in early beta and is considered a **work in progress**.  Many changes are being performed and may cause breakage upon updates. 
 * Currently, we strongly recommend against storing confidential information in ITFlow; ITFlow has not undergone a third-party security assessment.
-* We are hoping to have a stable 1.0 release early this year.
