@@ -1,7 +1,7 @@
 # About this Image
 This is the Docker image of [ITFlow](https://github.com/itflow-org/itflow). This image was created by a community member, we don't "officially" support Docker.
 
-Please read the wiki: https://docs.itflow.org
+Please see the wiki: https://docs.itflow.org/installation_docker
 
 # Usage
 ## ITFlow Only (no Reverse Proxy) 
