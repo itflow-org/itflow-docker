@@ -26,7 +26,7 @@
 --
 
 # About this Image
-This is the Docker image of [ITFlow](https://github.com/itflow-org/itflow). This image was created by a community member, we don't "officially" support Docker.
+This is the Docker image of [ITFlow](https://github.com/itflow-org/itflow). This image was created by a community member, we don't "officially" support Docker, this image is not ready for production use. 
 
 Please see the wiki: https://docs.itflow.org/installation_docker
 
