@@ -57,9 +57,8 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     libapache2-mod-php
 
-# Enable php and ssl apache mod
+# Enable php apache mod
 RUN a2enmod php8.3
-RUN a2enmod ssl
 
 # Set the work dir to the git repo. 
 WORKDIR /var/www/html
