@@ -49,7 +49,8 @@ RUN apt-get install -y \
     php-mysqli\
     php-curl\
     php-imap\
-    php-mailparse
+    php-mailparse\
+    php-gd
 
 RUN apt-get install -y \
     libapache2-mod-php\
