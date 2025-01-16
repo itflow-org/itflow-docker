@@ -40,7 +40,8 @@ RUN apt-get install -y \
     vim\
     cron\ 
     dnsutils\
-    iputils-ping
+    iputils-ping\
+    whois
 
 # Install & enable php extensions
 RUN apt-get install -y \ 
