@@ -18,7 +18,7 @@ services:
   itflow:
     hostname: itflow
     container_name: itflow
-    # Comment out image for older docker image, use build for local DockerFile
+    # Comment out image for original docker image, use build for local DockerFile until new build is uploaded to Docker
     # image: lued/itflow
     build: 
       context: .
