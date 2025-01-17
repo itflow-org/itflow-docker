@@ -1,11 +1,9 @@
-version: "3.9"
 ########################### NETWORKS
-
 networks:
   wan:
     name: wan
     driver: bridge
-      
+
   itflow-db:
     name: itflow-db
     external: false
@@ -20,9 +18,11 @@ services:
   itflow:
     hostname: itflow
     container_name: itflow
-    # Comment out build for docker.io image
-    image: lued/itflow
-    # build: .
+    # Comment out image for older docker image, use build for local DockerFile
+    # image: lued/itflow
+    build: 
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     depends_on: 
       - itflow-db
@@ -57,4 +57,4 @@ services:
       - MARIADB_USER=itflow
       - MARIADB_PASSWORD=$ITFLOW_DB_PASS
     volumes:
-      - itflow-db:/var/lib/mysql/
+      - itflow-db:/var/lib/mysql/    
