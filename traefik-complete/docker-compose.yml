@@ -141,7 +141,7 @@ services:
   itflow:
     hostname: itflow
     container_name: itflow
-    image: lued/itflow
+    image: itfloworg/itflow
     # build: ../.
     restart: unless-stopped
     depends_on: 
