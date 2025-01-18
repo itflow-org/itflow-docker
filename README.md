@@ -33,12 +33,11 @@ Please see the wiki: https://docs.itflow.org/installation_docker
 # Usage
 ## ITFlow Only (no Reverse Proxy) 
 1. Copy [docker-compose.yml](https://raw.githubusercontent.com/itflow-org/itflow-docker/main/docker-compose.yml) to a directory.
-2. Copy [Dockerfile](https://raw.githubusercontent.com/itflow-org/itflow-docker/main/Dockerfile) to the same directory.
-3. Within docker-compose.yml, adjust the ```environment:``` variables such as ITFLOW_NAME, ITFLOW_URL and ITFLOW_REPO (to your own MSPs fork).
-4. Copy the [.env](https://raw.githubusercontent.com/itflow-org/itflow-docker/main/.env) file to the same directory.
+2. Within docker-compose.yml, adjust the ```environment:``` variables such as ITFLOW_NAME, ITFLOW_URL and ITFLOW_REPO (to your own MSPs fork).
+3. Copy the [.env](https://raw.githubusercontent.com/itflow-org/itflow-docker/main/.env) file to the same directory.
 > Enter your timezone, root domain and database password within this file. You can avoid this step entirely by adding the information to your docker-compose.yml file directly instead. Or being safe, by using docker secrets.
-5. Run ```docker compose up -d``` (This step will take time as it needs to build the container from the base image)
-6. Go to your domain. You should be redirected to setup.php. Enter server information correlated to your set up .env and docker-compose.yml files.
+4. Run ```docker compose up -d```
+5. Go to your domain. You should be redirected to setup.php. Enter server information correlated to your set up .env and docker-compose.yml files.
 > Defaults:  Username: itflow, Password: $ITFLOW_DB_PASS from .env, Database: itflow, Server: itflow-db 
 
 ## Note: The Traefik container has not been updated with the new build, We do not recommend using this yet.
