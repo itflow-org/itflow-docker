@@ -16,6 +16,7 @@ volumes:
 ########################### ITFLOW
 services:
   itflow:
+    platform: linux/amd64
     hostname: itflow
     container_name: itflow
     # Comment out image for original docker image, use build for local DockerFile until new build is uploaded to Docker
