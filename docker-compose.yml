@@ -19,10 +19,10 @@ services:
     hostname: itflow
     container_name: itflow
     # Comment out image for original docker image, use build for local DockerFile until new build is uploaded to Docker
-    # image: lued/itflow
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: itfloworg/itflow
+    #build: 
+      #context: .
+      #dockerfile: Dockerfile
     restart: unless-stopped
     depends_on: 
       - itflow-db
