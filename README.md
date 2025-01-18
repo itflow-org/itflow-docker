@@ -40,8 +40,6 @@ Please see the wiki: https://docs.itflow.org/installation_docker
 5. Go to your domain. You should be redirected to setup.php. Enter server information correlated to your set up .env and docker-compose.yml files.
 > Defaults:  Username: itflow, Password: $ITFLOW_DB_PASS from .env, Database: itflow, Server: itflow-db 
 
-## Note: The Traefik container has not been updated with the new build, We do not recommend using this yet.
-
 ## Complete [Traefik](https://doc.traefik.io/traefik/getting-started/quick-start/) Solution (Reverse Proxy)
 1. Copy the traefik [docker-compose.yml](https://raw.githubusercontent.com/itflow-org/itflow-docker/main/traefik-complete/docker-compose.yml) to a directory.
 2. Within docker-compose.yml, adjust the ```environment:``` variables such as ITFLOW_NAME, ITFLOW_URL and ITFLOW_REPO (to your own MSPs fork).
