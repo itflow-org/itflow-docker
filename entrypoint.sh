@@ -18,7 +18,7 @@ sed -i "s/^Listen.*/Listen $ITFLOW_PORT/g" /etc/apache2/ports.conf
 # if itflow is not downloaded, perform the download after the volume mounting process within dockerfile is complete.
 if [[ -f /var/www/html/index.php ]]; then 
     cd /var/www/html
-    git fetch
+    # git fetch
 else
     git clone --branch $ITFLOW_REPO_BRANCH https://$ITFLOW_REPO /var/www/html
 fi
