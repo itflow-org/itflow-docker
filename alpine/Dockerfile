@@ -53,7 +53,8 @@ RUN apk add \
     php84-imap\
     php84-pecl-mailparse\
     php84-gd\
-    php84-mbstring
+    php84-mbstring\
+    php84-ctype
 
 # Install PHP into Apache
 RUN apk add \
