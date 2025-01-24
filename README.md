@@ -40,7 +40,9 @@ Please see the wiki: https://docs.itflow.org/installation_docker
 > Enter your timezone, root domain and database password within this file. You can avoid this step entirely by adding the information to your docker-compose.yml file directly instead. Or being safe, by using docker secrets.
 4. Run ```docker compose up -d```
 5. Go to your domain. You should be redirected to setup.php. Enter server information correlated to your set up .env and docker-compose.yml files.
-> Defaults:  Username: itflow, Password: $ITFLOW_DB_PASS from .env, Database: itflow, Server: itflow-db 
+> Defaults:  Username: itflow, Password: $ITFLOW_DB_PASS from .env, Database: itflow, Server: itflow-db
+6. You will either need to setup your reverse proxy from here to login or modify config.php in /var/www/localhost/htdocs if you're not using SSL
+> ```$config_https_only = FALSE;```
 
 ## Complete [Traefik](https://doc.traefik.io/traefik/getting-started/quick-start/) Solution (Reverse Proxy)
 1. Copy the traefik [docker-compose.yml](https://raw.githubusercontent.com/itflow-org/itflow-docker/main/traefik-complete/docker-compose.yml) to a directory.
