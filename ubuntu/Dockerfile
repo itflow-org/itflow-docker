@@ -1,8 +1,6 @@
-# DO NOT USE THIS. IT WON'T WORK YET
+FROM ubuntu:24.04
 
-FROM alpine:3.21
-
-LABEL dockerfile.version="v25.01" dockerfile.release-date="2025-01-23"
+LABEL dockerfile.version="v25.01" dockerfile.release-date="2025-01-16"
 
 # Set up ENVs that will be utilized in compose file.
 ENV TZ=Etc/UTC
@@ -29,46 +27,47 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # PREREQS: php php-intl php-mysqli php-imap php-curl libapache2-mod-php mariadb-server git -y
 # Upgrade, then install prereqs.
-RUN apk update && apk upgrade
+RUN apt-get update && apt-get upgrade -y && apt-get clean 
 
-# Basic Requirements
-RUN apk add \
+# ITFlow Requirements
+RUN apt-get install -y \
     git\
     apache2\
-    php84\
-    whois\
-    bind-tools\
-    tzdata
+    php\
+    whois
 
-# Alpine quality of life installs
-RUN apk add \
+# Ubuntu quality of life installs
+RUN apt-get install -y \
     vim\
-    nano
+    nano\
+    cron\ 
+    dnsutils\
+    iputils-ping
 
 # Install & enable php extensions
-RUN apk add \ 
-    php84-intl\
-    php84-mysqli\
-    php84-curl\
-    php84-imap\
-    php84-pecl-mailparse\
-    php84-gd\
-    php84-mbstring\
-    php84-ctype\
-    php84-session
+RUN apt-get install -y \ 
+    php-intl\
+    php-mysqli\
+    php-curl\
+    php-imap\
+    php-mailparse\
+    php-gd\
+    php-mbstring
 
-# Install PHP into Apache
-RUN apk add \
-    php84-apache2
+RUN apt-get install -y \
+    libapache2-mod-php
+
+# Enable php apache mod
+RUN a2enmod php8.3
 
 # Set the work dir to the git repo. 
-WORKDIR /var/www/localhost/htdocs
+WORKDIR /var/www/html
 
 # Edit php.ini file
 
-RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' /etc/php84/php.ini && \
-    sed -i 's/post_max_size = 8M/post_max_size = 500M/g' /etc/php84/php.ini && \
-    sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /etc/php84/php.ini
+RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' /etc/php/8.3/apache2/php.ini && \
+    sed -i 's/post_max_size = 8M/post_max_size = 500M/g' /etc/php/8.3/apache2/php.ini && \
+    sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /etc/php/8.3/apache2/php.ini
 
 # Entrypoint
 # On every run of the docker file, perform an entrypoint that verifies the container is good to go.
@@ -85,4 +84,4 @@ ENTRYPOINT [ "entrypoint.sh" ]
 EXPOSE $ITFLOW_PORT
 
 # Start the httpd service and have logs appear in stdout
-CMD [ "httpd", "-D", "FOREGROUND" ]
+CMD [ "apache2ctl", "-D", "FOREGROUND" ]
