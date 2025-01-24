@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 sed -i "s/^Listen.*/Listen $ITFLOW_PORT/g" /etc/apache2/httpd.conf
 
