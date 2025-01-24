@@ -28,6 +28,8 @@
 # About this Image
 This is the Docker image of [ITFlow](https://github.com/itflow-org/itflow). This image was created by a community member, we don't "officially" support Docker. This image is not ready for production use. 
 
+This image is based on Alpine 3.21
+
 Please see the wiki: https://docs.itflow.org/installation_docker
 
 # Usage
@@ -52,18 +54,8 @@ Please see the wiki: https://docs.itflow.org/installation_docker
 > Defaults:  Username: itflow, Password: $ITFLOW_DB_PASS from .env, Database: itflow, Server: itflow-db
 
 ## Cron Setup
-Enter the below in **/etc/cron/cron.d/itflow** of the docker container.
+Copy the apache file in the crontab folder to **/etc/crontabs/** of the docker container.
 
-The only difference is the docker container cannot run scripts as www-data currently therefore these must run as root.
-If the image is recreated or updated these must be re-entered.
-
-There are plans to streamline this process in future versions.
-
-```
-0 2 * * * root /usr/bin/php /var/www/html/cron.php [cronkey]
-* * * * * root /usr/bin/php /var/www/html/cron_ticket_email_parser.php [cronkey]
-* * * * * root /usr/bin/php /var/www/html/cron_mail_queue.php [cronkey]
-```
 ## Environment Variables
 ```
 ENV TZ Etc/UTC
