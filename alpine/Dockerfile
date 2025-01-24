@@ -71,7 +71,7 @@ RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' /etc/php84/
 
 # Entrypoint
 # On every run of the docker file, perform an entrypoint that verifies the container is good to go.
-ADD entrypoint.sh /usr/bin/entrypoint.sh
+COPY entrypoint.sh /usr/bin/
 
 RUN chmod +x /usr/bin/entrypoint.sh
 
