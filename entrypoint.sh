@@ -43,5 +43,9 @@ fi
 service apache2 reload
 service apache2 stop
 
+# Start Cron
+
+crond &
+
 # Execute the command in the dockerfile's CMD
 exec "$@"
