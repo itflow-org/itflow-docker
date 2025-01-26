@@ -74,6 +74,8 @@ RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' /etc/php84/
 # On every run of the docker file, perform an entrypoint that verifies the container is good to go.
 COPY entrypoint.sh /usr/bin/
 
+# Create crontab entries
+
 RUN echo "0       1       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron.php" >> /etc/crontabs/apache
 RUN echo "*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_ticket_email_parser.php" >> /etc/crontabs/apache
 RUN echo "*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_mail_queue.php" >> /etc/crontabs/apache
