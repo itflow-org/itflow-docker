@@ -20,7 +20,7 @@ services:
     hostname: itflow
     container_name: itflow
     # Comment out image for DockerHub image, use build for local DockerFile if you prefer to build from base
-    image: itfloworg/itflow:alpine
+    image: itfloworg/itflow:latest
     #build: 
       #context: .
       #dockerfile: Dockerfile
