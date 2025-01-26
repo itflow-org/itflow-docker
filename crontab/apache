@@ -1,5 +1,0 @@
-0       1       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron.php
-*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_ticket_email_parser.php
-*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_mail_queue.php
-0       2       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_certificate_refresher.php
-0       3       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_domain_refresher.php
