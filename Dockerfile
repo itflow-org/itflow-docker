@@ -2,7 +2,7 @@
 
 FROM alpine:3.21
 
-LABEL dockerfile.version="v25.01" dockerfile.release-date="2025-01-23"
+LABEL dockerfile.version="v25.05" dockerfile.release-date="2025-05-17"
 
 # Set up ENVs that will be utilized in compose file.
 ENV TZ=Etc/UTC
