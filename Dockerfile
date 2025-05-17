@@ -56,6 +56,7 @@ RUN apk add \
     php84-mbstring\
     php84-ctype\
     php84-session
+    php84-posix
 
 # Install PHP into Apache
 RUN apk add \
