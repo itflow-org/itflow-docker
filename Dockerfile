@@ -88,6 +88,9 @@ RUN chmod +x /usr/bin/entrypoint.sh
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/apache2/access.log && ln -sf /dev/stderr /var/log/apache2/error.log
 
+# Create Symlink to PHP from PHP84
+ln -s /usr/bin/php84 /usr/bin/php
+
 ENTRYPOINT [ "entrypoint.sh" ]
 
 # Expose the apache port
