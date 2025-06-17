@@ -55,9 +55,6 @@ Please see the wiki: https://docs.itflow.org/installation_docker
 7. Go to your domain. You should be redirected to setup.php. Enter server information correlated to .env and docker-compose.yml
 > Defaults:  Username: itflow, Password: $ITFLOW_DB_PASS from .env, Database: itflow, Server: itflow-db
 
-## Cron Setup
-Copy the apache file in the crontab folder to **/etc/crontabs/** of the docker container.
-
 ## Environment Variables
 ```
 ENV TZ Etc/UTC
