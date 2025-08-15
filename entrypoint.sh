@@ -2,7 +2,7 @@
 
 sed -i "s/^Listen.*/Listen $ITFLOW_PORT/g" /etc/apache2/httpd.conf
 rm -rf /var/www/localhost/htdocs/index.html
-# if itflow is not downloaded, perform the download after the volume mounting process within dockerfile is complete.
+# if itflow is not downloaded, perform the download after the volume mounting process within DockerFile is complete.
 if [[ -f /var/www/localhost/htdocs/index.php ]]; then 
     cd /var/www/localhost/htdocs
     # git fetch
