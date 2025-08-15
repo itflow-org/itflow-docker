@@ -39,10 +39,6 @@ else
     chmod -R 777 /var/www/localhost/htdocs
 fi
 
-# Enable the apache2 sites-available
-service apache2 reload
-service apache2 stop
-
 # Start Cron
 
 crond &
