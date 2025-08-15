@@ -52,9 +52,5 @@ else
     chmod -R 777 /var/www/html
 fi
 
-# Enable the apache2 sites-available
-service apache2 reload
-service apache2 stop
-
 # Execute the command in the dockerfile's CMD
 exec "$@"
