@@ -78,11 +78,11 @@ COPY entrypoint.sh /usr/bin/
 
 # Create crontab entries
 
-RUN echo "0       1       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron.php" >> /etc/crontabs/apache
-RUN echo "*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_ticket_email_parser.php" >> /etc/crontabs/apache
-RUN echo "*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_mail_queue.php" >> /etc/crontabs/apache
-RUN echo "0       2       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_certificate_refresher.php" >> /etc/crontabs/apache
-RUN echo "0       3       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/scripts/cron_domain_refresher.php" >> /etc/crontabs/apache
+RUN echo "0       1       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/cron.php" >> /etc/crontabs/apache
+RUN echo "*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/ticket_email_parser.php" >> /etc/crontabs/apache
+RUN echo "*       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/mail_queue.php" >> /etc/crontabs/apache
+RUN echo "0       2       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/certificate_refresher.php" >> /etc/crontabs/apache
+RUN echo "0       3       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/domain_refresher.php" >> /etc/crontabs/apache
 
 RUN chmod +x /usr/bin/entrypoint.sh
 
