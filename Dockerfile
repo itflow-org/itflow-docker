@@ -57,6 +57,7 @@ RUN apk add \
     php84-ctype\
     php84-session\
     php84-posix\
+    php84-xml\
     php84-zip
 
 # Install PHP into Apache
