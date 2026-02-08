@@ -42,6 +42,7 @@ services:
       - ITFLOW_LOG_LEVEL=info
       - ITFLOW_DB_HOST=itflow-db
       - ITFLOW_DB_PASS=$ITFLOW_DB_PASS
+      - ITFLOW_HTTPS_ONLY=${ITFLOW_HTTPS_ONLY:-FALSE}
     volumes:
       - ./itflow/:/var/www/localhost/htdocs
 
