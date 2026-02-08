@@ -33,7 +33,7 @@ if [[ -f /var/www/localhost/htdocs/config.php ]]; then
     sed -i "s/\$repo_branch.*';/\$repo_branch = '$ITFLOW_REPO_BRANCH';/g" /var/www/localhost/htdocs/config.php
 
     # HTTPS Only setting
-    sed -i "s/\$config_https_only.*';/\$config_https_only = $ITFLOW_HTTPS_ONLY;/g" /var/www/localhost/htdocs/config.php
+    sed -i "s/\$config_https_only.*;/\$config_https_only = $ITFLOW_HTTPS_ONLY;/g" /var/www/localhost/htdocs/config.php
     
     find /var/www/localhost/htdocs -type d -exec chmod 775 {} \;
     find /var/www/localhost/htdocs -type f -exec chmod 664 {} \;
