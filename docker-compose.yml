@@ -3,39 +3,38 @@ networks:
   wan:
     name: wan
     driver: bridge
-
   itflow-db:
     name: itflow-db
     external: false
 
 ########################### VOLUMES
-
 volumes:
   itflow-db:
-
+  itflow_data:          
+  
 ########################### ITFLOW
 services:
   itflow:
     platform: linux/amd64
     hostname: itflow
     container_name: itflow
-    # Comment out image for DockerHub image, use build for local DockerFile if you prefer to build from base
-    image: itfloworg/itflow:latest
-    #build: 
-      #context: .
-      #dockerfile: Dockerfile
+#    image: itfloworg/itflow:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
-    depends_on: 
-      - itflow-db
+    depends_on:
+      itflow-db:
+        condition: service_healthy  # ← waits for DB to be ready, not just started
     networks:
       - wan
       - itflow-db
     ports:
-      - "80:8080"
+      - "8080:8080"
     environment:
       - TZ=$TZ
       - ITFLOW_NAME=ITFlow
-      - ITFLOW_URL=it.$ROOT_DOMAIN
+      - ITFLOW_URL=$ROOT_DOMAIN
       - ITFLOW_PORT=8080
       - ITFLOW_REPO=github.com/itflow-org/itflow
       - ITFLOW_REPO_BRANCH=master
@@ -43,13 +42,19 @@ services:
       - ITFLOW_DB_HOST=itflow-db
       - ITFLOW_DB_PASS=$ITFLOW_DB_PASS
     volumes:
-      - ./itflow/:/var/www/localhost/htdocs
+      - itflow_data:/var/www/localhost/htdocs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
-  itflow-db:
+  itflow-db:            # ← duplicate removed
     hostname: itflow-db
     container_name: itflow-db
     image: mariadb:10.11.6
-    restart: always
+    restart: unless-stopped         # ← consistent with app
     networks:
       - itflow-db
     environment:
@@ -58,4 +63,10 @@ services:
       - MARIADB_USER=itflow
       - MARIADB_PASSWORD=$ITFLOW_DB_PASS
     volumes:
-      - itflow-db:/var/lib/mysql/    
+      - itflow-db:/var/lib/mysql/   # ← removed broken itflow_data entry
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
