@@ -18,6 +18,7 @@ services:
     platform: linux/amd64
     hostname: itflow
     container_name: itflow
+    #Uncomment image to use built image from dockerhub, be sure to comment out build: context: and dockerfile:
 #    image: itfloworg/itflow:latest
     build:
       context: .
@@ -50,7 +51,7 @@ services:
       retries: 3
       start_period: 40s
 
-  itflow-db:            # ← duplicate removed
+  itflow-db:
     hostname: itflow-db
     container_name: itflow-db
     image: mariadb:10.11.6
@@ -63,7 +64,7 @@ services:
       - MARIADB_USER=itflow
       - MARIADB_PASSWORD=$ITFLOW_DB_PASS
     volumes:
-      - itflow-db:/var/lib/mysql/   # ← removed broken itflow_data entry
+      - itflow-db:/var/lib/mysql/
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 10s
