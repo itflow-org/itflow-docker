@@ -28,7 +28,7 @@ services:
       #dockerfile: Dockerfile
     restart: unless-stopped
     depends_on: 
-      - itflow-db
+      itflow-db:
           condition: service_healthy  # ← waits for DB to be ready, not just started
     networks:
       - wan
