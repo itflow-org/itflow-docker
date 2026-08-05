@@ -81,7 +81,7 @@ COPY entrypoint.sh /usr/bin/
 
 # Create crontab entries
 
-RUN echo "0       1       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/cron.php" >> /etc/crontabs/apache
+RUN echo *       *       *       *       *       /usr/bin/php84 /var/www/localhost/htdocs/cron/cron.php" >> /etc/crontabs/apache
 
 RUN chmod +x /usr/bin/entrypoint.sh
 
