@@ -1,6 +1,4 @@
-# DO NOT USE THIS. IT WON'T WORK YET
-
-FROM alpine:3.21
+FROM php:8.4.27-cli-alpine3.24
 
 LABEL dockerfile.version="v25.05" dockerfile.release-date="2025-06-05"
 
@@ -35,8 +33,8 @@ RUN apk update && apk upgrade
 RUN apk add \
     git\
     apache2\
-    php84\
     whois\
+    php84\
     bind-tools\
     tzdata
 
@@ -73,6 +71,7 @@ WORKDIR /var/www/localhost/htdocs
 
 RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 500M/g' /etc/php84/php.ini && \
     sed -i 's/post_max_size = 8M/post_max_size = 500M/g' /etc/php84/php.ini && \
+    sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php84/php.ini && \
     sed -i 's/max_execution_time = 30/max_execution_time = 300/g' /etc/php84/php.ini
 
 # Entrypoint
@@ -89,7 +88,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 RUN ln -sf /dev/stdout /var/log/apache2/access.log && ln -sf /dev/stderr /var/log/apache2/error.log
 
 # Create Symlink to PHP from PHP84
-RUN ln -s /usr/bin/php84 /usr/bin/php
+#RUN ln -s /usr/bin/php84 /usr/bin/php
 
 ENTRYPOINT [ "entrypoint.sh" ]
 
